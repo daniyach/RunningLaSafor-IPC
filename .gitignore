@@ -1,0 +1,15 @@
+build/
+dist/
+nbbuild/
+
+# Configuración NetBeans
+nbproject/private/
+nbproject/genfiles.properties
+
+
+# BBDD
+sportactivity.db
+
+.DS_Store
+Thumbs.db
+*.iml
