@@ -1,11 +1,13 @@
 build/
 dist/
 nbbuild/
+*.class
+*.jar.old
 
 # Configuración NetBeans
 nbproject/private/
 nbproject/genfiles.properties
-
+nbproject/build-impl.xml
 
 # BBDD
 sportactivity.db
