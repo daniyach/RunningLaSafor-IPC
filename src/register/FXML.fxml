@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="377.0" style="-fx-background-color: FAEBD9;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="register.FXMLController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="377.0" style="-fx-background-color: FAEBD9;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="register.FXMLController">
    <children>
       <HBox prefHeight="87.0" prefWidth="377.0">
          <children>
@@ -26,6 +26,12 @@
                </HBox.margin>
             </Text>
          </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets left="10.0" right="10.0" top="10.0" />
+         </padding>
       </HBox>
       <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduzca sus datos a continuación:">
          <VBox.margin>
@@ -43,10 +49,10 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <TextField maxWidth="150.0" prefHeight="25.0" prefWidth="100.0" promptText="UsuarioIPC" />
+                        <TextField fx:id="nickname_register" maxWidth="150.0" prefHeight="25.0" prefWidth="100.0" promptText="UsuarioIPC" />
                      </children>
                   </VBox>
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="124.0" style="-fx-background-color: FFB052; -fx-border-color: grey; -fx-border-radius: 5; -fx-background-radius: 5;" text="Añadir Avatar">
+                  <Button fx:id="avatar" mnemonicParsing="false" onAction="#AñadirAvatar" prefHeight="27.0" prefWidth="124.0" style="-fx-background-color: FFB052; -fx-border-color: grey; -fx-border-radius: 5; -fx-background-radius: 5;" text="Añadir Avatar">
                      <HBox.margin>
                         <Insets top="17.0" />
                      </HBox.margin>
@@ -63,7 +69,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TextField promptText="UsuarioIPC@gmail.com">
+                  <TextField fx:id="correo_register" promptText="UsuarioIPC@gmail.com">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -80,7 +86,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <PasswordField promptText="Contraseña1@A" />
+                  <PasswordField fx:id="contraseña_register" promptText="Contraseña1@A" />
                </children>
                <VBox.margin>
                   <Insets left="5.0" right="5.0" top="5.0" />
@@ -93,7 +99,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <PasswordField promptText="Contraseña1@A" />
+                  <PasswordField fx:id="repcontraseña_register" promptText="Contraseña1@A" />
                   <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Debe tener entre 8 y 20 caracteres, al menos: mayúscula, minúscula, digito y símbolo." wrappingWidth="290.490234375" />
                </children>
                <VBox.margin>
@@ -107,13 +113,13 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TextField promptText="XX / XX / XXXX" />
+                  <TextField fx:id="fecha_register" promptText="XX / XX / XXXX" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </VBox>
-            <CheckBox mnemonicParsing="false" text="Acepto los terminos y condiciones.">
+            <CheckBox fx:id="condicionesyterminos" mnemonicParsing="false" text="Acepto los terminos y condiciones.">
                <VBox.margin>
                   <Insets left="7.0" />
                </VBox.margin></CheckBox>
@@ -125,10 +131,15 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
          </VBox.margin>
       </VBox>
+      <Text fx:id="error_register" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Text>
       <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="19.0" prefWidth="357.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: FFB052; -fx-border-color: grey; -fx-border-radius: 5; -fx-background-radius: 5;" text="Crear cuenta" />
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: FF5252; -fx-border-color: grey; -fx-border-radius: 5; -fx-background-radius: 5;" text="Volver">
+            <Button fx:id="crear_register" mnemonicParsing="false" onAction="#VerificarCrearCuenta" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: FFB052; -fx-border-color: grey; -fx-border-radius: 5; -fx-background-radius: 5;" text="Crear cuenta" />
+            <Button fx:id="volver_register" alignment="CENTER" mnemonicParsing="false" onAction="#OnActionVolver" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: FF5252; -fx-border-color: grey; -fx-border-radius: 5; -fx-background-radius: 5;" text="Volver">
                <HBox.margin>
                   <Insets left="160.0" />
                </HBox.margin>

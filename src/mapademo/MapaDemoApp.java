@@ -24,7 +24,7 @@ public class MapaDemoApp extends Application {
 
         SportActivityApp app = SportActivityApp.getInstance();
 
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/register/FXML.fxml"));
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/logo.png")));
         Scene scene = new Scene(root);
         stage.setTitle("Running la Safor - Folelé - IPC");
