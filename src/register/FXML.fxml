@@ -6,24 +6,18 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="377.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.FXMLController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="377.0" style="-fx-background-color: FAEBD9;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="register.FXMLController">
    <children>
       <HBox prefHeight="87.0" prefWidth="377.0">
          <children>
-            <ImageView fitHeight="87.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../Downloads/asd.jpg" />
-               </image>
-            </ImageView>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hazte Socio del Club">
+            <ImageView fx:id="login_foto" fitHeight="87.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hazte Socio Ya!">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
@@ -38,21 +32,30 @@
             <Insets left="20.0" />
          </VBox.margin>
       </Text>
-      <VBox prefHeight="367.0" prefWidth="514.0" style="-fx-border-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.15), 10, 0, 0, 4); -fx-border-style: solid; -fx-border-color: black;" styleClass="f">
+      <VBox prefHeight="367.0" prefWidth="514.0" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-border-color: black; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 20, 0, 0, 0);" styleClass="f">
          <children>
-            <VBox prefHeight="55.0" prefWidth="300.0">
+            <HBox prefHeight="48.0" prefWidth="315.0">
                <children>
-                  <Label text="Nickname:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField promptText="******IPC" />
+                  <VBox prefHeight="46.0" prefWidth="180.0">
+                     <children>
+                        <Label text="Nickname:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField maxWidth="150.0" prefHeight="25.0" prefWidth="100.0" promptText="UsuarioIPC" />
+                     </children>
+                  </VBox>
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="124.0" style="-fx-background-color: FFB052; -fx-border-color: grey; -fx-border-radius: 5; -fx-background-radius: 5;" text="Añadir Avatar">
+                     <HBox.margin>
+                        <Insets top="17.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
-            </VBox>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
             <VBox prefHeight="50.0" prefWidth="300.0">
                <children>
                   <Label text="Correo electrónico:">
@@ -60,7 +63,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TextField promptText="*********@gmail.com">
+                  <TextField promptText="UsuarioIPC@gmail.com">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -110,7 +113,10 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </VBox>
-            <CheckBox mnemonicParsing="false" text="Acepto los terminos y condiciones." />
+            <CheckBox mnemonicParsing="false" text="Acepto los terminos y condiciones.">
+               <VBox.margin>
+                  <Insets left="7.0" />
+               </VBox.margin></CheckBox>
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -121,7 +127,12 @@
       </VBox>
       <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="19.0" prefWidth="357.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Crear cuenta" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: FFB052; -fx-border-color: grey; -fx-border-radius: 5; -fx-background-radius: 5;" text="Crear cuenta" />
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: FF5252; -fx-border-color: grey; -fx-border-radius: 5; -fx-background-radius: 5;" text="Volver">
+               <HBox.margin>
+                  <Insets left="160.0" />
+               </HBox.margin>
+            </Button>
          </children>
          <VBox.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
