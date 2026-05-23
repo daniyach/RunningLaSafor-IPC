@@ -20,9 +20,8 @@
 <?import javafx.scene.layout.VBox?>
 
 <!-- stylesheets solo en el nodo raíz, cascada a todos los hijos -->
-<VBox prefHeight="600.0" prefWidth="900.0" stylesheets="@../resources/estilos.css"
-      xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="perfil.PerfilController">
+
+<VBox prefHeight="600.0" prefWidth="900.0" stylesheets="@../resources/estilos.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="perfil.PerfilController">
   <children>
 
     <MenuBar VBox.vgrow="NEVER">
@@ -55,8 +54,7 @@
       </menus>
     </MenuBar>
 
-    <SplitPane dividerPositions="0.35" focusTraversable="true"
-               prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <SplitPane dividerPositions="0.35" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <items>
 
         <!-- Panel izquierdo: info del usuario -->
@@ -64,10 +62,6 @@
           <children>
 
             <Label layoutX="14.0" layoutY="14.0" styleClass="titulo-seccion" text="Mi perfil" />
-
-            <!-- Foto de perfil (placeholder) -->
-            <Pane layoutX="95.0" layoutY="55.0" prefHeight="100.0" prefWidth="100.0"
-                  styleClass="foto-placeholder" />
             <Label layoutX="118.0" layoutY="90.0" text="Foto" />
 
             <Label layoutX="14.0" layoutY="175.0" styleClass="label-campo" text="Nombre:" />
@@ -81,9 +75,7 @@
 
             <Separator layoutX="10.0" layoutY="272.0" prefWidth="280.0" />
 
-            <Button fx:id="btnModificarPerfil" layoutX="80.0" layoutY="282.0"
-                    mnemonicParsing="false" onAction="#onModificarPerfil"
-                    styleClass="btn-primario" text="Modificar perfil">
+            <Button fx:id="btnModificarPerfil" layoutX="80.0" layoutY="282.0" mnemonicParsing="false" onAction="#onModificarPerfil" styleClass="btn-primario" text="Modificar perfil">
               <graphic>
                 <ImageView fitHeight="34.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                   <image><Image url="@../resources/icons/user-gear.png" /></image>
@@ -92,15 +84,14 @@
             </Button>
 
             <!-- Botón cerrar sesión -->
-            <Button fx:id="btnCerrarSesion" layoutX="10.0" layoutY="506.0"
-                    mnemonicParsing="false" onAction="#onCerrarSesion"
-                    styleClass="btn-cerrar-sesion" text="Cerrar sesión">
+            <Button fx:id="btnCerrarSesion" layoutX="10.0" layoutY="506.0" mnemonicParsing="false" onAction="#onCerrarSesion" styleClass="btn-cerrar-sesion" text="Cerrar sesión">
               <graphic>
                 <ImageView fitHeight="17.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                   <image><Image url="@../resources/icons/sign-out-white.png" /></image>
                 </ImageView>
               </graphic>
             </Button>
+                  <ImageView fx:id="imgAvatar" fitHeight="125.0" fitWidth="137.0" layoutX="88.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" />
 
           </children>
         </AnchorPane>
@@ -109,38 +100,29 @@
         <ScrollPane fitToWidth="true" prefHeight="548.0" prefWidth="580.0">
           <content>
             <!-- prefHeight del AnchorPane alto para que el scroll funcione bien -->
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="548.0" prefWidth="494.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="548.0" prefWidth="494.0" styleClass="panel-fondo">
               <children>
 
-                <Button fx:id="btnInicio" layoutX="14.0" layoutY="14.0"
-                        mnemonicParsing="false" onAction="#onVolverInicio"
-                        styleClass="btn-neutro" text="← Volver al inicio" />
+                <Button fx:id="btnInicio" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onVolverInicio" styleClass="btn-neutro" text="← Volver al inicio" />
 
                 <Separator layoutX="19.0" layoutY="55.0" prefWidth="522.0" />
 
-                <Label layoutX="19.0" layoutY="69.0"
-                       styleClass="tarjeta-titulo" text="Historial de sesiones" />
+                <Label layoutX="19.0" layoutY="69.0" styleClass="tarjeta-titulo" text="Historial de sesiones" />
 
                 <!-- anclas para que la tabla ocupe el espacio disponible -->
-                <TableView fx:id="tablaHistorial"
-                           layoutX="19.0" layoutY="95.0" prefHeight="380.0" prefWidth="538.0"
-                           AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0"
-                           AnchorPane.topAnchor="95.0" AnchorPane.bottomAnchor="65.0">
+                <TableView fx:id="tablaHistorial" layoutX="19.0" layoutY="95.0" prefHeight="380.0" prefWidth="538.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="95.0">
                   <columns>
-                    <TableColumn fx:id="colInicio"      prefWidth="95.0"  text="Inicio" />
-                    <TableColumn fx:id="colFin"         prefWidth="95.0"  text="Fin" />
-                    <TableColumn fx:id="colDuracion"    prefWidth="80.0"  text="Duración" />
-                    <TableColumn fx:id="colImportadas"  prefWidth="110.0" text="Act. importadas" />
-                    <TableColumn fx:id="colVistas"      prefWidth="85.0"  text="Act. vistas" />
-                    <TableColumn fx:id="colAnotaciones" prefWidth="95.0"  text="Anotaciones" />
+                    <TableColumn fx:id="colInicio" prefWidth="95.0" text="Inicio" />
+                    <TableColumn fx:id="colFin" prefWidth="95.0" text="Fin" />
+                    <TableColumn fx:id="colDuracion" prefWidth="80.0" text="Duración" />
+                    <TableColumn fx:id="colImportadas" prefWidth="110.0" text="Act. importadas" />
+                    <TableColumn fx:id="colVistas" prefWidth="85.0" text="Act. vistas" />
+                    <TableColumn fx:id="colAnotaciones" prefWidth="95.0" text="Anotaciones" />
                   </columns>
                 </TableView>
 
                 <!-- Panel de totales debajo de la tabla -->
-                <HBox layoutX="19.0" layoutY="487.0" prefWidth="538.0" spacing="20.0"
-                      styleClass="panel-totales"
-                      AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0"
-                      AnchorPane.bottomAnchor="10.0">
+                <HBox layoutX="19.0" layoutY="487.0" prefWidth="538.0" spacing="20.0" styleClass="panel-totales" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0">
                   <children>
                     <VBox alignment="CENTER">
                       <children>
@@ -184,11 +166,9 @@
     </SplitPane>
 
     <!-- Barra de estado -->
-    <HBox styleClass="barra-estado-contenedor" alignment="CENTER_LEFT"
-          spacing="5.0" VBox.vgrow="NEVER">
+    <HBox alignment="CENTER_LEFT" spacing="5.0" styleClass="barra-estado-contenedor" VBox.vgrow="NEVER">
       <children>
-        <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0"
-               styleClass="barra-estado" text="Perfil de usuario" HBox.hgrow="ALWAYS" />
+        <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" styleClass="barra-estado" text="Perfil de usuario" HBox.hgrow="ALWAYS" />
         <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
         <Label styleClass="barra-estado" text="Running la Safor" />
       </children>

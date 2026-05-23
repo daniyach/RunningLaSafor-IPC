@@ -74,6 +74,26 @@ S17.642,20.762,13.558,20.762z";
     -fx-background-color: #F5E3CC;
     -fx-font-size: 13px;
 }
+
+/* el splitpane no hereda el fondo del root solo */
+.split-pane {
+    -fx-background-color: #F5E3CC;
+    -fx-border-color: transparent;
+}
+
+.split-pane > .split-pane-divider {
+    -fx-background-color: #F5E3CC;
+    -fx-padding: 0 1 0 1;
+}
+
+/* los anchorpane dentro del splitpane tampoco heredan */
+.split-pane > AnchorPane {
+    -fx-background-color: #F5E3CC;
+}
+
+.panel-fondo {
+    -fx-background-color: #F5E3CC;
+}
  
 /* barra de menu */
 .menu-bar {

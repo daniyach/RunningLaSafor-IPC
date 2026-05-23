@@ -22,9 +22,7 @@ public class MapaDemoApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        SportActivityApp app = SportActivityApp.getInstance();
-
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../perfil/Perfil.fxml"));
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/logo.png")));
         Scene scene = new Scene(root);
         stage.setTitle("Running la Safor - Folelé - IPC");
