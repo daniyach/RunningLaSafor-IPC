@@ -66,3 +66,157 @@ S17.642,20.762,13.558,20.762z";
 .map-pin .arrow-button .arrow {
     -fx-padding: 0;
 }
+
+/* CSS con ayuda de IA */
+
+/* fondo general */
+.root {
+    -fx-background-color: #F5E3CC;
+    -fx-font-size: 13px;
+}
+ 
+/* barra de menu */
+.menu-bar {
+    -fx-background-color: white;
+    -fx-border-color: #DDDDDD;
+    -fx-border-width: 0 0 1 0;
+}
+ 
+/* barra de estado (en el footer) */
+.barra-estado-contenedor {
+    -fx-background-color: white;
+    -fx-border-color: #DDDDDD;
+    -fx-border-width: 0 0 1 0;
+}
+ 
+.barra-estado {
+    -fx-font-size: 11px;
+    -fx-text-fill: #888888;
+}
+ 
+/* titulos */
+.titulo-seccion {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+ 
+.titulo-opciones {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+ 
+/* labels de campos del formulario */
+.label-campo {
+    -fx-font-weight: bold;
+}
+ 
+.tarjeta-titulo {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+ 
+.tarjeta-descripcion {
+    -fx-font-size: 12px;
+    -fx-text-fill: #777777;
+}
+ 
+/* foto placeholder mientras no se implemente */
+.foto-placeholder {
+    -fx-background-color: #cccccc;
+    -fx-border-color: #999999;
+    -fx-border-width: 1;
+}
+ 
+/* botón principal naranja (guardar, crear cuenta...) */
+.btn-primario {
+    -fx-background-color: #F0931E;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 7 18 7 18;
+}
+ 
+.btn-primario:hover {
+    -fx-background-color: #D97E10;
+}
+ 
+/* boton rojo para cerrar sesion o volver */
+.btn-cerrar-sesion {
+    -fx-background-color: #E04444;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 7 18 7 18;
+}
+ 
+.btn-cerrar-sesion:hover {
+    -fx-background-color: #C23030;
+}
+ 
+/* botones azules de las tarjetas */
+.btn-accion {
+    -fx-background-color: #4a90d9;
+    -fx-text-fill: white;
+    -fx-background-radius: 4;
+}
+ 
+.btn-accion:hover {
+    -fx-background-color: #357abd;
+}
+ 
+.text-field, .password-field {
+    -fx-background-color: white;
+    -fx-border-color: #DDDDDD;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 6 10 6 10;
+    -fx-prompt-text-fill: #BBBBBB;
+}
+ 
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #4DC8C8;
+    -fx-border-width: 2;
+}
+ 
+/* tabla del historial */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #DDDDDD;
+}
+ 
+.table-view .column-header {
+    -fx-background-color: #F5E3CC;
+}
+ 
+.table-view .column-header .label {
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+ 
+.table-view .table-row-cell:odd {
+    -fx-background-color: #FAF4EE;
+}
+ 
+.table-view .table-row-cell:selected {
+    -fx-background-color: #4DC8C8;
+}
+ 
+/* panel de totales abajo de la tabla */
+.panel-totales {
+    -fx-background-color: #FEF3E5;
+    -fx-border-color: #F0C080;
+    -fx-border-width: 1;
+    -fx-padding: 10;
+}
+ 
+.total-valor {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #F0931E;
+}
+ 
+.total-etiqueta {
+    -fx-font-size: 10px;
+    -fx-text-fill: #888888;
+}
