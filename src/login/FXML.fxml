@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="341.0" prefWidth="377.0" style="-fx-background-color: FAEBD9;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.FXMLController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0" prefWidth="377.0" style="-fx-background-color: FAEBD9;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.FXMLController">
    <children>
       <HBox prefHeight="71.0" prefWidth="377.0">
          <children>
@@ -41,7 +41,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="nickname_login" promptText="******IPC" />
+                  <TextField fx:id="nickname_login" promptText="UsuarioIPC" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -68,10 +68,15 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
          </VBox.margin>
       </VBox>
+      <Text fx:id="error_login" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0">
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin>
+      </Text>
       <TextFlow prefHeight="24.0" prefWidth="377.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="¿No tienes una cuenta? Dale a " />
-            <Text fx:id="crear_cuenta" onMouseClicked="#handleCrear" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #0066cc; -fx-underline: true; -fx-cursor: hand;" text="crear cuenta." />
+            <Text fx:id="crear_cuenta" onMouseClicked="#clickCrear" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #0066cc; -fx-underline: true; -fx-cursor: hand;" text="crear cuenta." />
          </children>
          <VBox.margin>
             <Insets left="10.0" right="10.0" />
@@ -79,7 +84,7 @@
       </TextFlow>
       <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="19.0" prefWidth="357.0">
          <children>
-            <Button fx:id="iniciar_login" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: FFB052; -fx-border-color: grey; -fx-background-radius: 5; -fx-border-radius: 5;" text="Iniciar" />
+            <Button fx:id="iniciar_login" mnemonicParsing="false" onAction="#iniciarCuenta" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: FFB052; -fx-border-color: grey; -fx-background-radius: 5; -fx-border-radius: 5;" text="Iniciar" />
          </children>
          <VBox.margin>
             <Insets bottom="15.0" left="10.0" right="10.0" top="10.0" />
