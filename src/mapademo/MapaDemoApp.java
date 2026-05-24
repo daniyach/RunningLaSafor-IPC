@@ -22,8 +22,6 @@ public class MapaDemoApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        SportActivityApp app = SportActivityApp.getInstance();
-
         Parent root = FXMLLoader.load(getClass().getResource("../inicio/Inicio.fxml"));
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/logo.png")));
         Scene scene = new Scene(root);

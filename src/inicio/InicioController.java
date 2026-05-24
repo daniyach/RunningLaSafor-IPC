@@ -87,6 +87,7 @@ public class InicioController implements Initializable {
         if (usuario.getAvatar() != null) {
             imgAvatarSidebar.setImage(usuario.getAvatar());
         }
+        // Uso de IA
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(
                 "EEE dd MMM yyyy", new Locale("es")
         );
@@ -105,6 +106,7 @@ public class InicioController implements Initializable {
         }
     }
 
+    // Idea de IA
     private void activarBoton(Button boton) {
         if (btnActivo != null) {
             btnActivo.getStyleClass().remove("nav-btn-active");
@@ -125,19 +127,17 @@ public class InicioController implements Initializable {
     private void onMostrarActividades(ActionEvent event) {
         // TEMPORAL - hasta que esté listo Actividad
         activarBoton(btnActividades);
-        
+
     }
 
     @FXML
     private void onMostrarPerfil(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../perfil/Perfil.fxml"));
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Mi perfil");
+        activarBoton(btnPerfil);
+        Parent root = FXMLLoader.load(
+                getClass().getResource("../perfil/Perfil.fxml")
+        );
+        Stage stage = (Stage) btnPerfil.getScene().getWindow();
         stage.setScene(new Scene(root));
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(btnPerfil.getScene().getWindow());
-        stage.showAndWait();
     }
 
     @FXML

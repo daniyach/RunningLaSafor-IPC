@@ -1,5 +1,5 @@
 /* =============================================
-   estilos.css — Running la Safor
+   estilos.css — Running la Safor - con ayuda de IA
    ============================================= */
 
 
@@ -67,7 +67,7 @@
 }
 
 .tarjeta-titulo {
-    -fx-font-size: 14px;
+    -fx-font-size: 20px;
     -fx-font-weight: bold;
 }
 

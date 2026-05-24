@@ -209,7 +209,7 @@ public class PerfilController implements Initializable {
 
     @FXML
     private void onVolverInicio(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../mapademo/FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../inicio/Inicio.fxml"));
         Stage stage = (Stage) btnInicio.getScene().getWindow();
         stage.setScene(new Scene(root));
     }

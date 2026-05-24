@@ -81,7 +81,7 @@
           <children>
             <Label fx:id="lblFecha" styleClass="inicio-fecha" text="" />
             <Label fx:id="lblSaludo" styleClass="tarjeta-titulo" text="Hola," />
-            <Label styleClass="inicio-subtitulo" text="Estas son tus funciones principales y tus últimas actividades" />
+            <Label styleClass="inicio-subtitulo" text="Cada kilómetro cuenta. ¿Qué hacemos hoy?" />
           </children>
         </VBox>
 
@@ -106,7 +106,7 @@
             <VBox spacing="8.0" styleClass="tarjeta-inicio" HBox.hgrow="ALWAYS">
               <children>
                 <Label styleClass="tarjeta-inicio-titulo" text="Gestión de mapa" />
-                <Label styleClass="tarjeta-inicio-desc" text="Proveedor, capas, centrado" wrapText="true" />
+                <Label styleClass="tarjeta-inicio-desc" text="Explora nuevas rutas" wrapText="true" />
                 <!-- TODO: implementar por el compañero de mapas -->
                 <Button disable="true" mnemonicParsing="false" styleClass="tarjeta-inicio-btn" text="→" />
               </children>
@@ -116,7 +116,7 @@
             <VBox spacing="8.0" styleClass="tarjeta-inicio" HBox.hgrow="ALWAYS">
               <children>
                 <Label styleClass="tarjeta-inicio-titulo" text="Perfil" />
-                <Label styleClass="tarjeta-inicio-desc" text="Mis datos y récords" wrapText="true" />
+                <Label styleClass="tarjeta-inicio-desc" text="Mis datos" wrapText="true" />
                 <Button fx:id="btnPerfilTarjeta" mnemonicParsing="false" onAction="#onMostrarPerfil" styleClass="tarjeta-inicio-btn" text="→" />
               </children>
             </VBox>
