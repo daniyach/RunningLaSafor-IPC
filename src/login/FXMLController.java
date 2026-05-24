@@ -91,8 +91,16 @@ public class FXMLController implements Initializable {
         if (nickLogin.equals(nick) && contraseñaLogin.equals(contra)){
            
             SportActivityApp app = SportActivityApp.getInstance();
+        boolean loginCorrecto = false;
+        
+        try {
+            loginCorrecto = app.login(nickLogin, contraseñaLogin); 
+            
+        } catch (Exception e) {
+            loginCorrecto = false;
+        }
 
-                
+        if (loginCorrecto) {
             Parent root = FXMLLoader.load(getClass().getResource("/mapademo/FXMLDocument.fxml"));
             Scene scene = new Scene(root);
 
@@ -103,14 +111,16 @@ public class FXMLController implements Initializable {
             stage.setScene(scene);
             stage.show();
         
-        }else{
+        } else {
             nickname_login.setStyle("-fx-border-color: red");
             contraseña_login.setStyle("-fx-border-color: red");
             error_login.setText("Contraseña o Usuario incorrectos.");
-            
         }
         
+        }
     }
 }
+
+
     
 
