@@ -12,6 +12,8 @@ nbproject/build-impl.xml
 # BBDD
 sportactivity.db
 
+avatars/
+
 .DS_Store
 Thumbs.db
 *.iml
