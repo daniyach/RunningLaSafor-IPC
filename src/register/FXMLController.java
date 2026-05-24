@@ -4,6 +4,7 @@
  */
 package register;
 
+import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -19,6 +20,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -58,7 +61,8 @@ public class FXMLController implements Initializable {
         // TODO
         Image imagenLocal = new Image(getClass().getResourceAsStream("/resources/logorun.png"));
         login_foto.setImage(imagenLocal);
-    }    
+    } 
+      
 
     @FXML
     private void VerificarCrearCuenta(ActionEvent event) {
@@ -66,18 +70,34 @@ public class FXMLController implements Initializable {
         String correo = correo_register.getText();
         String contra = contraseña_register.getText();
         String repcontra = repcontraseña_register.getText();
-        String fecha = fecha_register.getText();
+        String fecha = fecha_register.getText(); 
+        
+        nickname_register.setPromptText("UsuarioIPC");
+        nickname_register.setStyle("-fx-border-color: black");
+        correo_register.setPromptText("UsuarioIPC@gmail.com");
+        correo_register.setStyle("-fx-border-color: black");
+        contraseña_register.setPromptText("Contraseña1@A");
+        contraseña_register.setStyle("-fx-border-color: black");
+        repcontraseña_register.setPromptText("Contraseña1@A");
+        repcontraseña_register.setStyle("-fx-border-color: black");
+        fecha_register.setPromptText("XX / XX / XXXX");
+        fecha_register.setStyle("-fx-border-color: black");
+        error_register.setText("");
+
+        
+        
+        
         
         String regexContraseña = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&._\\-\\/])[A-Za-z\\d@$!%*?&._\\-\\/]{8,20}$";
         String regexGmail = "^[A-Za-z0-9._%+-]+@gmail\\.com$";
         
         if (contra.isEmpty() || !contra.matches(regexContraseña)) {
-            contraseña_register.setText("La contraseña no es lo suficientemente segura.");
+            contraseña_register.setPromptText("La contraseña no es lo suficientemente segura.");
             contraseña_register.setStyle("-fx-border-color: red; -fx-fill: red");
         }
         
         if (!repcontra.equals(contra)){
-            repcontraseña_register.setText("Las contraseñas no coinciden");
+            repcontraseña_register.setPromptText("Las contraseñas no coinciden");
             repcontraseña_register.setStyle("-fx-border-color: red; -fx-fill: red");
         }
         
@@ -86,39 +106,56 @@ public class FXMLController implements Initializable {
             error_register.setText("Debes aceptar los terminos y condiciones.");
         }
         if (!correo.matches(regexGmail)){
-            correo_register.setText("Debes poner un dominio válido (@gmail.com)");
+            correo_register.setPromptText("Debes poner un dominio válido (@gmail.com)");
             correo_register.setStyle("-fx-border-color: red; -fx-fill: red");
         }
         
         if (nick.isEmpty()){
-            nickname_register.setText("Introduzca un Nickname");
+            nickname_register.setPromptText("Introduzca un Nickname");
             nickname_register.setStyle("-fx-border-color: red; -fx-fill: red");
         }
         LocalDate fechaNacimiento = null;
         DateTimeFormatter fechaDMA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        
-        try {
-            fechaNacimiento = LocalDate.parse(fecha, fechaDMA);
-            long edad = ChronoUnit.YEARS.between(fechaNacimiento, LocalDate.now());
+        if (!fecha.isEmpty()){
+            try {
+                fechaNacimiento = LocalDate.parse(fecha, fechaDMA);
+                long edad = ChronoUnit.YEARS.between(fechaNacimiento, LocalDate.now());
             
             if (edad < 12) {
-                fecha_register.setText("Debes ser mayor de 12 años para poder registrarte.");
+                fecha_register.setPromptText("Debes ser mayor de 12 años para poder registrarte.");
                 fecha_register.setStyle("-fx-border-color: red; -fx-fill: red");
             }
             
-        } catch (Exception e) {
-            // Si el formato no es xx/xx/xxxx o meten números imposibles (ej: 35/14/2020), saltará aquí
+            } catch (Exception e) {
             fecha_register.setText("Formato de la fecha invalid, prueba xx/xx/xxxx");
             fecha_register.setStyle("-fx-border-color: red; -fx-fill: red");
+            }
+        }else{
+            fecha_register.setPromptText("Introduzca una fecha.");
         }
-        
         
     }
 
     @FXML
     private void AñadirAvatar(ActionEvent event) {
-    }
+    FileChooser selectorArchivos = new FileChooser();
+    // Crear un filtro para mostrar SOLAMENTE imágenes
+    FileChooser.ExtensionFilter filtroImagenes = new FileChooser.ExtensionFilter( "Archivos de Imagen (*.png, *.jpg, *.jpeg)", "*.png", "*.jpg", "*.jpeg");
+    selectorArchivos.getExtensionFilters().add(filtroImagenes);
 
+    // Obtener la ventana actual para bloquearla de fondo mientras el explorador está abierto
+    Stage ventanaActual = (Stage) avatar.getScene().getWindow();
+
+    // Abrir la ventana del explorador de archivos
+    File archivoSeleccionado = selectorArchivos.showOpenDialog(ventanaActual);
+
+    // Procesar el archivo si el usuario ha seleccionado uno
+        if (archivoSeleccionado != null) {
+        // Guardamos la ruta absoluta de la imagen elegida
+        String rutaImagen = archivoSeleccionado.getAbsolutePath();
+        System.out.println("El usuario ha seleccionado la foto en: " + rutaImagen);
+        }
+    }
     @FXML
     private void OnActionVolver(ActionEvent event) {
     }
