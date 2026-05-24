@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../resources/estilos.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inicio.InicioController">
+
+  <!-- ═══════════════════════════════════════ -->
+  <!--              SIDEBAR                    -->
+  <!-- ═══════════════════════════════════════ -->
+  <left>
+    <VBox prefWidth="200.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+      <children>
+
+        <!-- Logo del club -->
+        <VBox alignment="CENTER" spacing="6.0">
+          <padding><Insets bottom="16.0" left="16.0" right="16.0" top="20.0" /></padding>
+          <children>
+            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+              <image><Image url="@../resources/logo.png" /></image>
+            </ImageView>
+            <Label alignment="CENTER" styleClass="sidebar-app-name" text="Running la Safor" wrapText="true" />
+          </children>
+        </VBox>
+
+        <Separator styleClass="sidebar-separator" />
+
+        <!-- Avatar y nombre del usuario -->
+        <VBox fx:id="sideBarB2" alignment="CENTER" spacing="6.0">
+          <padding><Insets bottom="12.0" left="16.0" right="16.0" top="12.0" /></padding>
+          <children>
+            <ImageView fx:id="imgAvatarSidebar" fitHeight="58.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="lblUsuario" styleClass="sidebar-username" text="Usuario" />
+          </children>
+        </VBox>
+
+        <Separator styleClass="sidebar-separator" />
+
+        <!-- Botones de navegación -->
+        <VBox spacing="4.0" VBox.vgrow="ALWAYS">
+          <padding><Insets bottom="8.0" left="8.0" right="8.0" top="10.0" /></padding>
+          <children>
+            <Button fx:id="btnMapa" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onMostrarMapa" styleClass="nav-btn" text="Mapa" />
+            <Button fx:id="btnActividades" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onMostrarActividades" styleClass="nav-btn" text="Actividades" />
+            <Button fx:id="btnPerfil" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onMostrarPerfil" styleClass="nav-btn" text="Mi perfil" />
+          </children>
+        </VBox>
+
+        <Separator styleClass="sidebar-separator" />
+
+        <!-- Cerrar sesión -->
+        <VBox>
+          <padding><Insets bottom="12.0" left="8.0" right="8.0" top="8.0" /></padding>
+          <children>
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onCerrarSesion" styleClass="nav-btn-logout" text="Cerrar sesión" />
+          </children>
+        </VBox>
+
+      </children>
+    </VBox>
+  </left>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!--          CONTENIDO CENTRAL              -->
+  <!-- ═══════════════════════════════════════ -->
+  <center>
+    <VBox spacing="0.0" styleClass="content-area" BorderPane.alignment="CENTER">
+      <children>
+
+        <!-- Cabecera: fecha y saludo -->
+        <VBox spacing="4.0" styleClass="inicio-header">
+          <padding><Insets bottom="20.0" left="24.0" right="24.0" top="24.0" /></padding>
+          <children>
+            <Label fx:id="lblFecha" styleClass="inicio-fecha" text="" />
+            <Label fx:id="lblSaludo" styleClass="tarjeta-titulo" text="Hola," />
+            <Label styleClass="inicio-subtitulo" text="Cada kilómetro cuenta. ¿Qué hacemos hoy?" />
+          </children>
+        </VBox>
+
+        <Separator />
+
+        <!-- Tarjetas de acceso rápido -->
+        <HBox spacing="16.0">
+          <padding><Insets bottom="20.0" left="24.0" right="24.0" top="20.0" /></padding>
+          <children>
+
+            <!-- Tarjeta: Registrar actividad -->
+            <VBox spacing="8.0" styleClass="tarjeta-inicio" HBox.hgrow="ALWAYS">
+              <children>
+                <Label styleClass="tarjeta-inicio-titulo" text="Registrar actividad" />
+                <Label styleClass="tarjeta-inicio-desc" text="Sube un fichero GPX" wrapText="true" />
+                <!-- TODO: implementar por el compañero de actividades -->
+                <Button disable="true" mnemonicParsing="false" styleClass="tarjeta-inicio-btn" text="→" />
+              </children>
+            </VBox>
+
+            <!-- Tarjeta: Gestión de mapa -->
+            <VBox spacing="8.0" styleClass="tarjeta-inicio" HBox.hgrow="ALWAYS">
+              <children>
+                <Label styleClass="tarjeta-inicio-titulo" text="Gestión de mapa" />
+                <Label styleClass="tarjeta-inicio-desc" text="Explora nuevas rutas" wrapText="true" />
+                <!-- TODO: implementar por el compañero de mapas -->
+                <Button disable="true" mnemonicParsing="false" styleClass="tarjeta-inicio-btn" text="→" />
+              </children>
+            </VBox>
+
+            <!-- Tarjeta: Perfil -->
+            <VBox spacing="8.0" styleClass="tarjeta-inicio" HBox.hgrow="ALWAYS">
+              <children>
+                <Label styleClass="tarjeta-inicio-titulo" text="Perfil" />
+                <Label styleClass="tarjeta-inicio-desc" text="Mis datos" wrapText="true" />
+                <Button fx:id="btnPerfilTarjeta" mnemonicParsing="false" onAction="#onMostrarPerfil" styleClass="tarjeta-inicio-btn" text="→" />
+              </children>
+            </VBox>
+
+          </children>
+        </HBox>
+
+        <Separator />
+
+        <!-- Últimas actividades -->
+        <VBox prefHeight="200.0" spacing="8.0" VBox.vgrow="NEVER">
+          <padding><Insets bottom="16.0" left="24.0" right="24.0" top="16.0" /></padding>
+          <children>
+
+            <HBox alignment="CENTER_LEFT">
+              <children>
+                <Label styleClass="tarjeta-titulo" text="Últimas actividades" HBox.hgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding></Label>
+                <!-- TODO: implementar navegación al historial completo -->
+                <Button fx:id="btnVerTodas" mnemonicParsing="false" onAction="#onMostrarActividades" styleClass="btn-neutro" text="Mostrar todas →" />
+              </children>
+            </HBox>
+
+            <!-- ListView gestionado por el compañero de actividades -->
+            <ListView fx:id="listUltimasActividades" prefHeight="200.0" VBox.vgrow="NEVER" />
+
+          </children>
+        </VBox>
+
+      </children>
+    </VBox>
+  </center>
+
+</BorderPane>
