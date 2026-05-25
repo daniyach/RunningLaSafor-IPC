@@ -67,6 +67,10 @@ public class ModificarPerfilController implements Initializable {
         if (usuario.getAvatar() != null) {
             imgAvatar.setImage(usuario.getAvatar());
             lblRutaAvatar.setText(usuario.getAvatarPath());
+        } else {
+            imgAvatar.setImage(new Image(
+                    getClass().getResourceAsStream("../resources/icons/userDefault.png")
+            ));
         }
     }
 

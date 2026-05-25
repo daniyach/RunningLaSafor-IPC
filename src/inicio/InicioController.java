@@ -4,6 +4,7 @@
  */
 package inicio;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -22,10 +23,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import upv.ipc.sportlib.Activity;
@@ -63,7 +67,7 @@ public class InicioController implements Initializable {
     private ListView<Activity> listUltimasActividades;
 
     private SportActivityApp app = SportActivityApp.getInstance();
-    private User usuario = app.getCurrentUser();
+    private User usuario;
     private Button btnActivo;
 
     /**
@@ -71,8 +75,6 @@ public class InicioController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        app.login("testuser", "Password1!");
 
         usuario = app.getCurrentUser();
 
@@ -86,6 +88,10 @@ public class InicioController implements Initializable {
         lblUsuario.setText(usuario.getNickName());
         if (usuario.getAvatar() != null) {
             imgAvatarSidebar.setImage(usuario.getAvatar());
+        } else {
+            imgAvatarSidebar.setImage(new Image(
+                    getClass().getResourceAsStream("../resources/icons/userDefault.png")
+            ));
         }
         // Uso de IA
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(
@@ -96,9 +102,22 @@ public class InicioController implements Initializable {
     }
 
     private void cargarUltimasActividades() {
+        // con ayuda de IA
+        listUltimasActividades.setCellFactory(lv -> new ListCell<Activity>() {
+            @Override
+            protected void updateItem(Activity a, boolean empty) {
+                super.updateItem(a, empty);
+                if (empty || a == null) {
+                    setText(null);
+                } else {
+                    String km = String.format("%.1f km", a.getTotalDistance() / 1000);
+                    setText(a.getName() + " - " + km);
+                }
+            }
+        });
+
         List<Activity> actividades = app.getUserActivities();
         if (actividades != null && !actividades.isEmpty()) {
-            // Cargamos las últimas 4 actividades del usuario.
             int total = Math.min(4, actividades.size());
             listUltimasActividades.getItems().setAll(
                     actividades.subList(0, total)
@@ -141,7 +160,7 @@ public class InicioController implements Initializable {
     }
 
     @FXML
-    private void onCerrarSesion(ActionEvent event) {
+    private void onCerrarSesion(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Cerrar sesión");
         alert.setHeaderText("¿Estás seguro?");
@@ -151,9 +170,34 @@ public class InicioController implements Initializable {
 
         if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
             app.logout();
-            // TEMPORAL - hasta que esté listo login
+            Parent root = FXMLLoader.load(getClass().getResource("/login/FXML.fxml"));
+            Scene scene = new Scene(root);
             Stage stage = (Stage) btnPerfil.getScene().getWindow();
-            stage.close();
+            stage.setScene(scene);
+            stage.show();
+        }
+    }
+
+    @FXML
+    private void onRegistrarActividad(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Seleccionar fichero GPX");
+        fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("Ficheros GPX", "*.gpx")
+        );
+
+        File fichero = fileChooser.showOpenDialog(
+                btnMapa.getScene().getWindow()
+        );
+
+        if (fichero != null) {
+            Activity actividad = app.importActivity(fichero);
+            if (actividad != null) {
+                System.out.println("Actividad importada: " + actividad.getName());
+                cargarUltimasActividades(); // refrescar el listview
+            } else {
+                System.out.println("Error al importar la actividad");
+            }
         }
     }
 
