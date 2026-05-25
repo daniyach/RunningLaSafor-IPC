@@ -102,7 +102,7 @@ public class FXMLController implements Initializable {
 
     if (correcto) {
        
-        Parent root = FXMLLoader.load(getClass().getResource("/inicio/inicio.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/inicio/Inicio.fxml"));
         Scene scene = new Scene(root);
 
         Stage stage = (Stage) iniciar_login.getScene().getWindow();
