@@ -82,44 +82,45 @@ public class FXMLController implements Initializable {
 
     @FXML
     private void iniciarCuenta(ActionEvent event) throws IOException {
-        String nickLogin = nickname_login.getText();
+       
+        String nickLogin = nickname_login.getText().trim();
         String contraseñaLogin = contraseña_login.getText();
+    
+        
         nickname_login.setStyle("-fx-border-color: black");
         contraseña_login.setStyle("-fx-border-color: black");
-        
-        
-        if (nickLogin.equals(nick) && contraseñaLogin.equals(contra)){
-           
-            SportActivityApp app = SportActivityApp.getInstance();
-        boolean loginCorrecto = false;
-        
-        try {
-            loginCorrecto = app.login(nickLogin, contraseñaLogin); 
-            
-        } catch (Exception e) {
-            loginCorrecto = false;
-        }
+        error_login.setText("");
 
-        if (loginCorrecto) {
-            Parent root = FXMLLoader.load(getClass().getResource("/mapademo/FXMLDocument.fxml"));
-            Scene scene = new Scene(root);
+    SportActivityApp app = SportActivityApp.getInstance();
+    boolean correcto = false;
+    
+    try{
+        correcto = app.login(nickLogin, contraseñaLogin); 
+    } catch (Exception e) {
+        correcto = false;
+    }
 
-            Stage stage = (Stage) iniciar_login.getScene().getWindow();
-              
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/logo.png")));
-            stage.setTitle("Running la Safor - Folelé - IPC");
-            stage.setScene(scene);
-            stage.show();
-        
+    if (correcto) {
+       
+        Parent root = FXMLLoader.load(getClass().getResource("/inicio/inicio.fxml"));
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) iniciar_login.getScene().getWindow();
+          
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/logo.png")));
+        stage.setTitle("Running la Safor - Folelé - IPC");
+        stage.setScene(scene);
+        stage.show();
+       
         } else {
             nickname_login.setStyle("-fx-border-color: red");
             contraseña_login.setStyle("-fx-border-color: red");
             error_login.setText("Contraseña o Usuario incorrectos.");
         }
         
-        }
     }
 }
+
 
 
     
