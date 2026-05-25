@@ -25,7 +25,7 @@
           <padding><Insets bottom="16.0" left="16.0" right="16.0" top="20.0" /></padding>
           <children>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-              <image><Image url="@../resources/logo.png" /></image>
+              <image><Image url="@../resources/logorun.png" /></image>
             </ImageView>
             <Label alignment="CENTER" styleClass="sidebar-app-name" text="Running la Safor" wrapText="true" />
           </children>
@@ -98,7 +98,7 @@
                 <Label styleClass="tarjeta-inicio-titulo" text="Registrar actividad" />
                 <Label styleClass="tarjeta-inicio-desc" text="Sube un fichero GPX" wrapText="true" />
                 <!-- TODO: implementar por el compañero de actividades -->
-                <Button disable="true" mnemonicParsing="false" styleClass="tarjeta-inicio-btn" text="→" />
+                <Button mnemonicParsing="false" onAction="#onRegistrarActividad" styleClass="tarjeta-inicio-btn" text="→" />
               </children>
             </VBox>
 
@@ -108,7 +108,7 @@
                 <Label styleClass="tarjeta-inicio-titulo" text="Gestión de mapa" />
                 <Label styleClass="tarjeta-inicio-desc" text="Explora nuevas rutas" wrapText="true" />
                 <!-- TODO: implementar por el compañero de mapas -->
-                <Button disable="true" mnemonicParsing="false" styleClass="tarjeta-inicio-btn" text="→" />
+                <Button mnemonicParsing="false" onAction="#onMostrarMapa" styleClass="tarjeta-inicio-btn" text="→" />
               </children>
             </VBox>
 

@@ -25,6 +25,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javafx.scene.paint.Color;
@@ -89,10 +90,6 @@ public class PerfilController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        // usuario de pruebas sin tener implementado el login
-        if (app.getCurrentUser() == null) {
-            app.login("testuser", "Password1!");
-        }
         usuario = app.getCurrentUser();
         cargarDatosUsuario();
 
@@ -104,6 +101,10 @@ public class PerfilController implements Initializable {
         lblFechaNacimiento.setText(usuario.getBirthDate().toString());
         if (usuario.getAvatar() != null) {
             imgAvatar.setImage(usuario.getAvatar());
+        } else {
+            imgAvatar.setImage(new Image(
+                    getClass().getResourceAsStream("../resources/icons/userDefault.png")
+            ));
         }
 
         cargarHistorial();
@@ -172,21 +173,23 @@ public class PerfilController implements Initializable {
     }
 
     @FXML
-    private void onCerrarSesion(ActionEvent event) {
+    private void onCerrarSesion(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Cerrar sesión");
         alert.setHeaderText("¿Estás seguro?");
         alert.setContentText("Se cerrará la sesión actual.");
-        
+
         Optional<ButtonType> resultado = alert.showAndWait();
-        
-        if(resultado.isPresent() && resultado.get() == ButtonType.OK){
+
+        if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
             app.logout();
+            Parent root = FXMLLoader.load(getClass().getResource("/login/FXML.fxml"));
+            Scene scene = new Scene(root);
             Stage stage = (Stage) btnCerrarSesion.getScene().getWindow();
-            stage.close();
-            //System.out.println("El usuario ha cerrado sesión");
+            stage.setScene(scene);
+            stage.show();
         }
-        
+
     }
 
     @FXML
